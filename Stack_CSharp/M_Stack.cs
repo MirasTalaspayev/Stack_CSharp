@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,11 @@ namespace Stack_CSharp
 {
     class M_Stack : ICloneable
     {
+        // Properties
         private int[] values;
         private int Stack_size { get; set; }
         private int Stack_capacity { get; set; }
-
+        // Constructors
         public M_Stack()
         {
             Stack_capacity = 4;
@@ -31,13 +33,14 @@ namespace Stack_CSharp
                 values[i] = other.values[i];
 
         }
-        public M_Stack(List<int> other) 
+        public M_Stack(List<int> other)
         {
             values = new int[4];
             Stack_size = 0;
             Stack_capacity = 4;
-            foreach (int i in other) Push(i); 
+            foreach (int i in other) Push(i);
         }
+        // Methods
         public void Push(int val)
         {
             if (Stack_size == Stack_capacity)
@@ -75,26 +78,28 @@ namespace Stack_CSharp
             Console.Write("]");
         }
         public int Size() { return Stack_size; }
-        public int Peek() 
+        public int Peek()
         {
             if (Stack_size == 0) throw new ArgumentOutOfRangeException("Out of Range.", "Stack is empty.");
-            return values[Stack_size - 1]; 
+            return values[Stack_size - 1];
         }
-        public void Pop() 
-        { 
+        public void Pop()
+        {
             if (Stack_size == 0) throw new ArgumentOutOfRangeException("Out of Range.", "Stack is empty.");
-            Stack_size--; 
+            Stack_size--;
         }
         public void Clear() { Stack_size = 0; }
-        public void Reset(int s) 
+        public void Reset(int s)
         {
             if (s < 0) throw new ArgumentOutOfRangeException("Negative input size of Stack.", "Stack size should be non-negative.");
-            Stack_size = s; 
+            Stack_size = s;
         }
         public bool Empty()
         {
             return Stack_size == 0;
         }
+        
     }
+    
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -7,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Stack_CSharp
 {
+    
+
     class Program
     {
         static void Main(string[] args)
@@ -22,7 +25,7 @@ namespace Stack_CSharp
                 numbers.Add(i);
             }
             M_Stack stack = new M_Stack(numbers);
-            Console.WriteLine(stack);
+            // Console.WriteLine(stack); This funtion should work as M_Stack.Print() function
         }
     }
 }
