@@ -91,7 +91,8 @@ namespace Stack_CSharp
         public void Clear() { Stack_size = 0; }
         public void Reset(int s)
         {
-            if (s < 0) throw new ArgumentOutOfRangeException("Negative input size of Stack.", "Stack size should be non-negative.");
+            if (s < 0) throw new ArgumentOutOfRangeException("Reset(int s)", "Stack size should be non-negative.");
+            if (s > Stack_capacity) throw new ArgumentOutOfRangeException("Reset(int s)", "Argument of Reset(int i) should be less than Stack capacity");
             Stack_size = s;
         }
         public bool Empty()
@@ -106,10 +107,7 @@ namespace Stack_CSharp
                     throw new ArgumentOutOfRangeException("Out of range.", String.Format("Index {0} is not in the range of Stack.", i));
                 return values[i]; 
             }
-        }
-
-        
+        }  
     }
-    
 }
 
