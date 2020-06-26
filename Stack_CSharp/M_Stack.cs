@@ -98,6 +98,16 @@ namespace Stack_CSharp
         {
             return Stack_size == 0;
         }
+        public int this[int i] 
+        {
+            get 
+            {
+                if (i < 0 || i >= Stack_size)
+                    throw new ArgumentOutOfRangeException("Out of range.", String.Format("Index {0} is not in the range of Stack.", i));
+                return values[i]; 
+            }
+        }
+
         
     }
     

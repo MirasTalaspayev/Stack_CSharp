@@ -25,6 +25,7 @@ namespace Stack_CSharp
                 numbers.Add(i);
             }
             M_Stack stack = new M_Stack(numbers);
+            Console.WriteLine(stack[3]);
             // Console.WriteLine(stack); This funtion should work as M_Stack.Print() function
         }
     }
