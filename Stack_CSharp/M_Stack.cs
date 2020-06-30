@@ -107,7 +107,16 @@ namespace Stack_CSharp
                     throw new ArgumentOutOfRangeException("Out of range.", String.Format("Index {0} is not in the range of Stack.", i));
                 return values[i]; 
             }
-        }  
+        }
+        public override string ToString()
+        {
+            string s = "[";
+            int i = 0;
+            for (; i < Stack_size - 1; i++)
+                s += String.Format(values[i].ToString() + ", ");
+            s += String.Format(values[i].ToString() + "]");
+            return s;
+        }
     }
 }
 
