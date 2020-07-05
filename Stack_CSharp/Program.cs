@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace Stack_CSharp
 {
-    
+
 
     class Program
     {
         static void Main(string[] args)
         {
             Test();
+            Console.WriteLine();
+            Test_String();
             Console.ReadLine();
         }
         static void Test()
@@ -24,9 +26,16 @@ namespace Stack_CSharp
             {
                 numbers.Add(i);
             }
-            M_Stack stack = new M_Stack(numbers);
+            M_Stack<int> stack = new M_Stack<int>(numbers);
             Console.WriteLine(stack[3]);
-            Console.WriteLine(stack); 
+            Console.WriteLine(stack);
+        }
+        static void Test_String()
+        {
+            List<string> m = new List<string>() { "miras", "didar", "adel", "someone" };
+            M_Stack<string> m_Stack = new M_Stack<string>(m);
+            Console.WriteLine(m_Stack);
+
         }
     }
 }

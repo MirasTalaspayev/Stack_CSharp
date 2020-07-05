@@ -11,10 +11,10 @@ using System.Xml.Serialization;
 
 namespace Stack_CSharp
 {
-    class M_Stack : ICloneable
+    class M_Stack<T> : ICloneable
     {
         // Properties
-        private int[] values;
+        private T[] values;
         private int Stack_size { get; set; }
         private int Stack_capacity { get; set; }
         // Constructors
@@ -22,31 +22,31 @@ namespace Stack_CSharp
         {
             Stack_capacity = 4;
             Stack_size = 0;
-            values = new int[Stack_capacity];
+            values = new T[Stack_capacity];
         }
-        public M_Stack(M_Stack other)
+        public M_Stack(M_Stack<T> other)
         {
             Stack_capacity = other.Stack_capacity;
             Stack_size = other.Stack_size;
-            values = new int[Stack_capacity];
+            values = new T[Stack_capacity];
             for (int i = 0; i < Stack_size; i++)
                 values[i] = other.values[i];
 
         }
-        public M_Stack(List<int> other)
+        public M_Stack(List<T> other)
         {
-            values = new int[4];
+            values = new T[other.Count];
             Stack_size = 0;
             Stack_capacity = 4;
-            foreach (int i in other) Push(i);
+            foreach (T i in other) Push(i);
         }
         // Methods
-        public void Push(int val)
+        public void Push(T val)
         {
             if (Stack_size == Stack_capacity)
             {
                 Stack_capacity *= 2;
-                int[] new_values = new int[Stack_capacity];
+                T[] new_values = new T[Stack_capacity];
                 for (int i = 0; i < Stack_size; i++)
                     new_values[i] = values[i];
                 values = new_values;
@@ -57,9 +57,9 @@ namespace Stack_CSharp
         public object Clone()
         {
             Console.WriteLine("Cloned");
-            M_Stack new_stack = new M_Stack();
+            M_Stack<T> new_stack = new M_Stack<T>();
             new_stack.Stack_capacity = this.Stack_capacity;
-            new_stack.values = new int[Stack_capacity];
+            new_stack.values = new T[Stack_capacity];
             new_stack.Stack_size = this.Stack_size;
             for (int i = 0; i < Stack_size; i++)
                 new_stack.values[i] = this.values[i];
@@ -78,7 +78,7 @@ namespace Stack_CSharp
             Console.Write("]");
         }
         public int Size() { return Stack_size; }
-        public int Peek()
+        public T Peek()
         {
             if (Stack_size == 0) throw new ArgumentOutOfRangeException("Out of Range.", "Stack is empty.");
             return values[Stack_size - 1];
@@ -99,7 +99,7 @@ namespace Stack_CSharp
         {
             return Stack_size == 0;
         }
-        public int this[int i] 
+        public T this[int i] 
         {
             get 
             {
