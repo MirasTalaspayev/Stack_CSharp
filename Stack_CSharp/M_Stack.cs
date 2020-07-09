@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
@@ -11,7 +12,7 @@ using System.Xml.Serialization;
 
 namespace Stack_CSharp
 {
-    class M_Stack<T> : ICloneable
+    class M_Stack<T> : ICloneable, IEnumerable
     {
         // Properties
         private T[] values;
@@ -117,6 +118,12 @@ namespace Stack_CSharp
             s += String.Format(values[i].ToString() + "]");
             return s;
         }
+        public IEnumerator GetEnumerator()
+        {
+            foreach (T x in values)
+                yield return x;
+        }
+       
     }
 }
 

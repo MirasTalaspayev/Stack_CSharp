@@ -35,7 +35,7 @@ namespace Stack_CSharp
             List<string> m = new List<string>() { "miras", "didar", "adel", "someone" };
             M_Stack<string> m_Stack = new M_Stack<string>(m);
             Console.WriteLine(m_Stack);
-
+            foreach (string s in m) Console.WriteLine(s + ". Now foreach loop works!");
         }
     }
 }
