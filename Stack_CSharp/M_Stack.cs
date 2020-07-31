@@ -25,6 +25,14 @@ namespace Stack_CSharp
             Stack_size = 0;
             values = new T[Stack_capacity];
         }
+        public M_Stack(params T[] Ts)
+        {
+            values = new T[Ts.Length];
+            for (int i = 0; i < Ts.Length; i++)
+                values[i] = Ts[i];
+            Stack_size = Ts.Length;
+            Stack_capacity = Ts.Length;
+        }
         public M_Stack(M_Stack<T> other)
         {
             Stack_capacity = other.Stack_capacity;
@@ -123,7 +131,18 @@ namespace Stack_CSharp
             foreach (T x in values)
                 yield return x;
         }
-       
+        public M_Stack<T> FindAll(Predicate<T> t)
+        {
+            M_Stack<T> new_stack = new M_Stack<T>();
+            foreach (T x in values)
+            {
+                if (t(x))
+                {
+                    new_stack.Push(x);
+                }
+            }
+            return new_stack;
+        }
     }
 }
 

@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace Stack_CSharp
 {
-
-
     class Program
     {
         static void Main(string[] args)
         {
-            Test();
-            Console.WriteLine();
-            Test_String();
+            PredicateTest();
             Console.ReadLine();
+        }
+        static void PredicateTest()
+        {
+            M_Stack<int> ints = new M_Stack<int>(1, 2, 3, 5);
+            M_Stack<int> odds = ints.FindAll(x => x % 2 == 1);
+            odds.Print();
         }
         static void Test()
         {
