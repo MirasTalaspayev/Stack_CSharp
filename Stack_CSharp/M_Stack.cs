@@ -131,17 +131,24 @@ namespace Stack_CSharp
             foreach (T x in values)
                 yield return x;
         }
-        public M_Stack<T> FindAll(Predicate<T> t)
+        public M_Stack<T> FindAll(Predicate<T> predicate)
         {
             M_Stack<T> new_stack = new M_Stack<T>();
             foreach (T x in values)
             {
-                if (t(x))
+                if (predicate(x))
                 {
                     new_stack.Push(x);
                 }
             }
             return new_stack;
+        }
+        public T Find(Predicate<T> predicate)
+        {
+            foreach (T x in values)
+                if (predicate(x))
+                    return x;
+            return default(T);
         }
     }
 }
