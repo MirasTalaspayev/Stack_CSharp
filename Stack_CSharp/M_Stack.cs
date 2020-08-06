@@ -25,6 +25,12 @@ namespace Stack_CSharp
             Stack_size = 0;
             values = new T[Stack_capacity];
         }
+        public M_Stack(int capacity)
+        {
+            Stack_capacity = capacity;
+            Stack_size = 0;
+            values = new T[Stack_capacity];
+        }
         public M_Stack(params T[] Ts)
         {
             values = new T[Ts.Length];
@@ -108,13 +114,13 @@ namespace Stack_CSharp
         {
             return Stack_size == 0;
         }
-        public T this[int i] 
+        public T this[int i]
         {
-            get 
+            get
             {
                 if (i < 0 || i >= Stack_size)
                     throw new ArgumentOutOfRangeException("Out of range.", String.Format("Index {0} is not in the range of Stack.", i));
-                return values[i]; 
+                return values[i];
             }
         }
         public override string ToString()
@@ -150,6 +156,26 @@ namespace Stack_CSharp
                     return x;
             return default(T);
         }
+        private void SimpInsert(T value)
+        {
+            values[Stack_size] = value;
+            Stack_size++;
+        }
+        static public M_Stack<T> operator +(M_Stack<T> a, M_Stack<T> b)
+        {
+            M_Stack<T> result = new M_Stack<T>(a.Stack_capacity + b.Stack_capacity);
+            foreach (T x in a)
+            {
+                result.SimpInsert(x);
+            }
+            foreach (T x in b)
+            {
+                result.SimpInsert(x);
+            }
+            
+            return result;
+        }
+        
     }
 }
 

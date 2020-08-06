@@ -17,11 +17,7 @@ namespace Stack_CSharp
     {
         static void Main(string[] args)
         {
-            MyClass myClass = new MyClass();
-            M_Stack<MyClass> myclasses = new M_Stack<MyClass>();
-            MyClass myClass1 = myclasses.Find(temp => temp == myClass);
-            Console.WriteLine(myClass1);
-            //PredicateTest2();
+            OperatorTest();
             Console.ReadLine();
         }
         static void PredicateTest2()
@@ -55,6 +51,16 @@ namespace Stack_CSharp
             M_Stack<string> m_Stack = new M_Stack<string>(m);
             Console.WriteLine(m_Stack);
             foreach (string s in m) Console.WriteLine(s + ". Now foreach loop works!");
+        }
+        static void OperatorTest()
+        {
+            M_Stack<int> a = new M_Stack<int>(12, 45);
+            M_Stack<int> b = new M_Stack<int>(44, 78, 99);
+            M_Stack<int> c = a + b;
+            Console.WriteLine(c);
+            c.Push(7);
+            Console.WriteLine(c);
+            Console.WriteLine(c.Size());
         }
     }
 }
